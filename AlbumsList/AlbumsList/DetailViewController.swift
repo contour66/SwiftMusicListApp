@@ -10,12 +10,17 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBAction func addButtonTapped(_ sender: Any) {
+        insertNewTrack()
+    }
     @IBOutlet weak var albumLabel: UILabel!
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var addSongTextField: UITextField!
+    
     var album: Album?
     var songs = [String]()
     
@@ -75,7 +80,31 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
-
+    func insertNewTrack() {
+        songs.append(addSongTextField.text!)
+        album?.songs.append(addSongTextField.text!)
+        let indexPath = IndexPath(row: songs.count - 1, section: 0)
+        table.beginUpdates()
+        table.insertRows(at: [indexPath], with: .automatic)
+        table.endUpdates()
+        addSongTextField.text = ""
+        view.endEditing(true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            songs.remove(at: indexPath.row)
+            table.beginUpdates()
+            table.deleteRows(at: [indexPath], with: .automatic)
+            
+            table.endUpdates()
+        }
+    }
+    
 }
 
 /*
