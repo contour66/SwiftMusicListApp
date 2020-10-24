@@ -17,6 +17,8 @@ class AlbumTableViewController: UITableViewController {
     var album: Album!
     
     
+    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +61,7 @@ class AlbumTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of MusicListViewCell")
         }
         let album = albums[indexPath.row]
+        
         
         cell.albumLabel.text = album.album
         cell.artistLabel.text = album.artist
