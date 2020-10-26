@@ -105,6 +105,19 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+//    private func deleteAction(album: Album, indexPath: IndexPath){
+//        let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete?", preferredStyle: .alert)
+//        let deleteAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+//            songs.remove(at: indexPath.row)
+//            self.tableView?.deleteRows(at: [indexPath], with: .automatic)
+//        }
+//        let cancelAction = UIAlertAction(title: "No", style: .default, handler: nil)
+//        alert.addAction(deleteAction)
+//        alert.addAction(cancelAction)
+//        present(alert,animated: true)
+//        
+//    }
+    
 }
 
 /*
